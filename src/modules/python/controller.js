@@ -30,6 +30,7 @@ const compilePython = async (req, res) => {
         await fs.unlink(path)
         res.status(200).json(out);
     }catch(err){
+        console.log(err.message)
         res.status(500).json(err);
     }
 }
