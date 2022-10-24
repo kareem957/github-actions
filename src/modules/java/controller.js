@@ -6,7 +6,7 @@ const exec = util.promisify(require("child_process").exec);
 const compileJava = async (req, res) => {
     const { code } = req.body;
     const filename = cuid.slug();
-    const path = `${__dirname}/temp/${filename}.js`;
+    const path = `${__dirname}/temp/${filename}.java`;
     try {
         await fs.writeFile(path, code);
         const command = `java ${path}`;
@@ -35,7 +35,7 @@ const compileJavaWithInput = async (req, res) => {
     const { code, input = "" } = req.body;
     const args = input?.split("\n")?.join(" ");
     const filename = cuid.slug();
-    const path = `${__dirname}/temp/${filename}.js`;
+    const path = `${__dirname}/temp/${filename}.java`;
     try {
         await fs.writeFile(path, code);
         const command = `java ${path} ${args}`;
